@@ -1,2 +1,0 @@
-# FPurpleHaze.github.io
-portfólio 
