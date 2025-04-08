@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alvaro Barbosa - Desenvolvedor Fullstack</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #181818;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1.6;
+            background-image: url('botticelli_anexo.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            min-height: 100vh;
+            overflow-y: auto;
+        }
+
+        header {
+            background-color: #222;
+            padding: 30px;
+            width: 90%;
+            max-width: 1200px;
+            text-align: center;
+            margin-top: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .profile-info {
+            margin-bottom: 25px;
+        }
+
+        .profile-info h1 {
+            font-size: 2.5em;
+            margin-bottom: 5px;
+            color: #eee;
+        }
+
+        .profile-info p {
+            font-size: 1.1em;
+            color: #bbb;
+            margin-bottom: 8px;
+        }
+
+        .contact-buttons {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 35px;
+            justify-content: center;
+        }
+
+        .contact-button {
+            background-color: #333;
+            color: #f0f0f0;
+            border: none;
+            padding: 18px 30px;
+            border-radius: 30px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        .contact-button:hover {
+            background-color: #555;
+        }
+
+        .contact-button img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .marquee-container {
+            width: 90%;
+            max-width: 1200px;
+            overflow: hidden;
+            background-color: #222;
+            padding: 10px 0;
+            border-radius: 10px;
+            margin: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .marquee-text {
+            white-space: nowrap;
+            color: #bbb;
+            font-size: 1.2em;
+            display: inline-block;
+            padding-left: 100%;
+        }
+
+        .selling-section {
+            background-color: #222;
+            padding: 40px;
+            width: 90%;
+            max-width: 1200px;
+            border-radius: 10px;
+            margin-bottom: 40px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            gap: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+        }
+
+        .selling-card {
+            background-color: #333;
+            border-radius: 10px;
+            overflow: hidden;
+            width: calc(30% - 30px);
+            min-width: 280px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .selling-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .selling-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+            border-bottom: 1px solid #444;
+        }
+
+        .selling-card-text {
+            padding: 25px;
+            text-align: center;
+        }
+
+        .selling-card-text h3 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+            color: #eee;
+        }
+
+        .selling-card-text p {
+            color: #bbb;
+            font-size: 1em;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 0 100px; /* Aumentado o padding-bottom para espaço da Terra */
+            color: #777;
+            width: 100%;
+            font-size: 0.9em;
+            position: relative;
+        }
+
+        /* Container da Terra - AGORA NO FINAL DA PÁGINA */
+        #earth-container {
+            position: absolute;
+            bottom: -75px; /* Metade para fora do footer */
+            right: 20px;
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        #earth-container canvas {
+            display: block;
+            width: 100% !important;
+            height: 100% !important;
+            border-radius: 50%;
+        }
+
+        @media (max-width: 768px) {
+            .contact-buttons {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .selling-card {
+                width: calc(50% - 20px);
+                min-width: auto;
+            }
+            
+            #earth-container {
+                width: 120px;
+                height: 120px;
+                bottom: -60px; /* Ajuste proporcional */
+            }
+        }
+
+        @media (max-width: 576px) {
+            .selling-card {
+                width: 90%;
+            }
+            
+            #earth-container {
+                width: 100px;
+                height: 100px;
+                right: 15px;
+                bottom: -50px; /* Ajuste proporcional */
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="profile-info">
+            <h1>Alvaro Gonçalves Barbosa</h1>
+            <p>Desenvolvedor Fullstack</p>
+            <p>25 anos | Cursando ADS</p>
+        </div>
+
+        <div class="contact-buttons">
+            <a href="https://www.instagram.com/alvarosdl09/" target="_blank" class="contact-button">
+                <img src="instagram-logo.png" alt="Instagram"> Instagram
+            </a>
+            <a href="mailto:alvarosdl09@gmail.com" class="contact-button">
+                <img src="email-logo.png" alt="Email"> Email
+            </a>
+        </div>
+    </header>
+
+    <div class="marquee-container">
+        <span class="marquee-text" id="marqueeText">
+            * Ei! Tá querendo uma página bonita e leve pro seu negócio? Precisa automatizar tarefas, criar um sistema personalizado, ou brincar com inteligência artificial? Me chama no Insta ou no email e bora colocar sua ideia em prática! Preço justo, atendimento direto comigo e suporte de verdade. *
+        </span>
+    </div>
+
+    <section class="selling-section">
+        <div class="selling-card">
+            <img src="smiling-person-1.jpg" alt="Sites modernos e rápidos">
+            <div class="selling-card-text">
+                <h3>Sites modernos e rápidos</h3>
+                <p>Crio páginas com visual profissional, responsivas e leves, que funcionam bem em qualquer dispositivo.</p>
+            </div>
+        </div>
+        <div class="selling-card">
+            <img src="smiling-personambulance-person-2.jpg" alt="Automação de Tarefas">
+            <div class="selling-card-text">
+                <h3>Automação de Tarefas</h3>
+                <p>Simplifique sua rotina com bots e sistemas que fazem o trabalho chato por você.</p>
+            </div>
+        </div>
+        <div class="selling-card">
+            <img src="smiling-person-3.jpg" alt="Integrações com IA">
+            <div class="selling-card-text">
+                <h3>Integrações com IA</h3>
+                <p>Implemento IA no seu projeto para atender clientes, classificar dados ou responder comandos.</p>
+            </div>
+        </div>
+        <div class="selling-card">
+            <img src="smiling-person-1.jpg" alt="Sistemas sob medida">
+            <div class="selling-card-text">
+                <h3>Sistemas sob medida</h3>
+                <p>Precisa de algo único? Desenvolvo sistemas completos com as funcionalidades que você precisa.</p>
+            </div>
+        </div>
+        <div class="selling-card">
+            <img src="smiling-person-2.jpg" alt="Atualizações e Suporte">
+            <div class="selling-card-text">
+                <h3>Atualizações e Suporte</h3>
+                <p>Precisa de manutenção ou melhorias? Pode contar comigo a qualquer momento.</p>
+            </div>
+        </div>
+        <div class="selling-card">
+            <img src="smiling-person-3.jpg" alt="Consultoria para Projetos">
+            <div class="selling-card-text">
+                <h3>Consultoria para Projetos</h3>
+                <p>Tem uma ideia e não sabe por onde começar? Te ajudo a planejar e tirar do papel com visão técnica.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2025 Alvaro Gonçalves Barbosa - Portfólio</p>
+        <div id="earth-container"></div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // Configuração da cena
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, 1, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({ 
+            alpha: true,
+            antialias: true 
+        });
+        
+        // Configuração do renderer
+        const container = document.getElementById('earth-container');
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        container.appendChild(renderer.domElement);
+
+        // Luzes
+        const ambientLight = new THREE.AmbientLight(0xffffff, 0.5);
+        scene.add(ambientLight);
+
+        const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+        directionalLight.position.set(5, 3, 5);
+        scene.add(directionalLight);
+
+        // Terra
+        const geometry = new THREE.SphereGeometry(1, 64, 64);
+        const textureLoader = new THREE.TextureLoader();
+        const material = new THREE.MeshPhongMaterial({
+            map: textureLoader.load('earth_texture.jpg'),
+            bumpMap: textureLoader.load('earth_bump.jpg'),
+            bumpScale: 0.05,
+            specularMap: textureLoader.load('earth_specular.jpg'),
+            specular: new THREE.Color('grey'),
+            shininess: 5
+        });
+        const earth = new THREE.Mesh(geometry, material);
+        scene.add(earth);
+
+        camera.position.z = 2;
+
+        // Animação
+        function animate() {
+            requestAnimationFrame(animate);
+            earth.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+        // Ajuste de redimensionamento
+        function handleResize() {
+            const size = Math.min(container.clientWidth, container.clientHeight);
+            camera.aspect = 1;
+            camera.updateProjectionMatrix();
+            renderer.setSize(size, size);
+        }
+        window.addEventListener('resize', handleResize);
+    </script>
+
+    <script>
+        // Animação do texto em movimento
+        const marqueeText = document.getElementById('marqueeText');
+        let position = 0;
+
+        function animateMarquee() {
+            position -= 1.5;
+            marqueeText.style.transform = `translateX(${position}px)`;
+            if (position <= -marqueeText.offsetWidth) {
+                position = window.innerWidth;
+            }
+            requestAnimationFrame(animateMarquee);
+        }
+        animateMarquee();
+    </script>
+</body>
+</html>
